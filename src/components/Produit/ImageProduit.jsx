@@ -22,6 +22,8 @@ import { toast } from 'react-toastify';
 import ReactHtmlParser from 'react-html-parser';
 import 'react-toastify/dist/ReactToastify.css';
 
+import apiUrl from '../../apiUrl';
+
 import style from './ImageProduit.module.css';
 
 function ImageProduit({ buttonLabel, picture, description, name }) {
@@ -63,14 +65,9 @@ function ImageProduit({ buttonLabel, picture, description, name }) {
     e.preventDefault();
     try {
       setIsLoading(true);
-      await Axios.post(
-        `https://btz-js-202003-p3-lookup-back.jsrover.wilders.dev/clients`,
-        clients
-      );
-      await Axios.post(
-        `https://btz-js-202003-p3-lookup-back.jsrover.wilders.dev/sendMail`,
-        {
-          html: `<p><b>Produit :</b> ${name},</p>
+      await Axios.post(`${apiUrl}/clients`, clients);
+      await Axios.post(`${apiUrl}/sendMail`, {
+        html: `<p><b>Produit :</b> ${name},</p>
           <p><b>Entreprise :</b> ${clients.companyName},</p>
           <p><b>Nom :</b> ${clientsName.lastname},</p>
           <p><b>Prénom :</b> ${clientsName.firstname},</p>
@@ -81,10 +78,9 @@ function ImageProduit({ buttonLabel, picture, description, name }) {
         <p><b>Quantités :</b> ${quantity},</p>
         <p>Voici le message du client :</p>
         <p>${message}</p>`,
-          subject: `Demande de devis sur LookUp.fr de la part de ${clients.companyName}`,
-          emailTo: 'contact@lookup-france.com', // Email antonin
-        }
-      );
+        subject: `Demande de devis sur LookUp.fr de la part de ${clients.companyName}`,
+        emailTo: 'contact@lookup-france.com', // Email antonin
+      });
       notifySuccess();
       toggle();
     } catch (err) {

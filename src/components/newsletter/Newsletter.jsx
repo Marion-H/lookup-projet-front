@@ -3,6 +3,9 @@ import { Form, Button, Input, Col, Row } from 'reactstrap';
 import Axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+
+import apiUrl from '../../apiUrl';
+
 import styles from './Newsletter.module.css';
 
 toast.configure();
@@ -48,10 +51,7 @@ const Newsletter = () => {
   const postNewsletter = async (e) => {
     e.preventDefault();
     try {
-      await Axios.post(
-        `https://btz-js-202003-p3-lookup-back.jsrover.wilders.dev/clients`,
-        input
-      );
+      await Axios.post(`${apiUrl}/clients`, input);
       notifySuccess();
     } catch (err) {
       notifyError();

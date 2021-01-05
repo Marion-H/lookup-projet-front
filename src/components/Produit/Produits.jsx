@@ -7,6 +7,7 @@ import Description from './Description';
 import ImageProduit from './ImageProduit';
 import style from './Produits.module.css';
 import Avis from './Avis';
+import apiUrl from '../../apiUrl';
 
 const Produits = () => {
   const [productData, setProductData] = useState([]);
@@ -19,9 +20,7 @@ const Produits = () => {
 
   const getDataProduct = async () => {
     try {
-      const res = await axios.get(
-        'https://btz-js-202003-p3-lookup-back.jsrover.wilders.dev/products'
-      );
+      const res = await axios.get(`${apiUrl}/products`);
       setProductData(res.data);
     } catch (err) {
       setError(err);

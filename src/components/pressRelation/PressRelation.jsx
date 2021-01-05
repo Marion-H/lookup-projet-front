@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Row, Container, Spinner, Col } from 'reactstrap';
 import axios from 'axios';
 import Press from './Press';
+
+import apiUrl from '../../apiUrl';
+
 import style from './Press.module.css';
 
 export default function PressRelation() {
@@ -12,9 +15,7 @@ export default function PressRelation() {
   useEffect(() => {
     const getPress = async () => {
       try {
-        const res = await axios.get(
-          'https://btz-js-202003-p3-lookup-back.jsrover.wilders.dev/press'
-        );
+        const res = await axios.get(`${apiUrl}/press`);
         setPresse(res.data);
       } catch (err) {
         setError(err);

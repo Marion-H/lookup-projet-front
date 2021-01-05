@@ -8,6 +8,8 @@ import {
   Spinner,
 } from 'reactstrap';
 import axios from 'axios';
+
+import apiUrl from '../../apiUrl';
 import styles from './CarouselHome.module.css';
 
 const CarouselHome = () => {
@@ -21,9 +23,7 @@ const CarouselHome = () => {
   useEffect(() => {
     const getCarousels = async () => {
       try {
-        const res = await axios.get(
-          'https://btz-js-202003-p3-lookup-back.jsrover.wilders.dev/carousels/'
-        );
+        const res = await axios.get(`${apiUrl}/carousels/'`);
         setCarousels(res.data);
       } catch (err) {
         setError(err);
