@@ -22,6 +22,7 @@ import styles from './NavbarComp.module.css';
 import logo from './LookUp.png';
 import facebook from './facebook.png';
 import linkedin from './In-Blue-34.png';
+import apiUrl from '../../apiUrl';
 
 const MyNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,9 +34,7 @@ const MyNavbar = () => {
 
   const getDataProduct = async () => {
     try {
-      const res = await Axios.get(
-        'https://btz-js-202003-p3-lookup-back.jsrover.wilders.dev/products_info'
-      );
+      const res = await Axios.get(`${apiUrl}/products_info`);
       setProductDataInfo(res.data);
     } catch (err) {
       setError(err);

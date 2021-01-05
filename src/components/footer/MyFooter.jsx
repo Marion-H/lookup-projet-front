@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Spinner } from 'reactstrap';
 import axios from 'axios';
+
+import apiUrl from '../../apiUrl';
+
 import styles from './Footer.module.css';
 
 export default function MyFooter() {
@@ -11,9 +14,7 @@ export default function MyFooter() {
   useEffect(() => {
     const getPartner = async () => {
       try {
-        const res = await axios.get(
-          'https://btz-js-202003-p3-lookup-back.jsrover.wilders.dev/partenaires'
-        );
+        const res = await axios.get(`${apiUrl}/partenaires`);
         setPartner(res.data);
       } catch (err) {
         setError(err);

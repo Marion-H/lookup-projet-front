@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Spinner } from 'reactstrap';
 
 import DescriptionCard from './DescriptionCard';
+import apiUrl from '../../apiUrl';
 
 function Description({ backgroundBlue, uuid }) {
   const [productInfo, setProductInfo] = useState([]);
@@ -12,9 +13,7 @@ function Description({ backgroundBlue, uuid }) {
 
   const getProductInfo = async () => {
     try {
-      const res = await Axios.get(
-        `https://btz-js-202003-p3-lookup-back.jsrover.wilders.dev/products/${uuid}/products_info`
-      );
+      const res = await Axios.get(`${apiUrl}/products/${uuid}/products_info`);
       setProductInfo(res.data);
     } catch (err) {
       setError(err);

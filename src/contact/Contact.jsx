@@ -11,6 +11,9 @@ import {
 } from 'reactstrap';
 import Axios from 'axios';
 import { toast } from 'react-toastify';
+
+import apiUrl from '../apiUrl';
+
 import styles from './contact.module.css';
 
 export default function Contact() {
@@ -51,7 +54,7 @@ export default function Contact() {
     const getLookup = async () => {
       try {
         const res = await Axios.get(
-          'https://btz-js-202003-p3-lookup-back.jsrover.wilders.dev/admin/39e68df2-1f3f-42a6-9c73-1826db3ad3f3'
+          `${apiUrl}/admin/39e68df2-1f3f-42a6-9c73-1826db3ad3f3`
         );
         setLookup(res.data);
       } catch (err) {

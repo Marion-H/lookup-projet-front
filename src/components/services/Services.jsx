@@ -3,6 +3,9 @@ import { Row, Col, Button, Spinner } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactHtmlParser from 'react-html-parser';
+
+import apiUrl from '../../apiUrl';
+
 import styles from './Services.module.css';
 
 export default function Services() {
@@ -14,9 +17,7 @@ export default function Services() {
   useEffect(() => {
     const getServices = async () => {
       try {
-        const res = await axios.get(
-          'https://btz-js-202003-p3-lookup-back.jsrover.wilders.dev/services'
-        );
+        const res = await axios.get(`${apiUrl}/services`);
         setServices(res.data);
       } catch (err) {
         setError(err);
