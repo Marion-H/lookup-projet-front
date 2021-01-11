@@ -12,7 +12,7 @@ import {
 import Axios from 'axios';
 import { toast } from 'react-toastify';
 
-import apiUrl from '../apiUrl';
+import apiUrl from '../../apiUrl';
 
 import styles from './contact.module.css';
 
@@ -54,7 +54,7 @@ export default function Contact() {
     const getLookup = async () => {
       try {
         const res = await Axios.get(
-          `${apiUrl}/admin/39e68df2-1f3f-42a6-9c73-1826db3ad3f3`
+          `${apiUrl}/admin/038138b3-812e-4ed0-82d5-cde48154a583`
         );
         setLookup(res.data);
       } catch (err) {
@@ -95,6 +95,10 @@ export default function Contact() {
         <Col className={`${styles.col} d-flex flex-column align-items-center`}>
           <h1 className={styles.title1}>Vous souhaitez nous contacter ?</h1>
           <p className={styles.title3}>Société {lookup.companyName}</p>
+          <p className={styles.text}>
+            {lookup.streetNumber}, {lookup.streetName} {lookup.postalCode}{' '}
+            {lookup.city}
+          </p>
           <p className={styles.text}>{lookup.email}</p>
           <p className={styles.text}>{lookup.phone}</p>
         </Col>

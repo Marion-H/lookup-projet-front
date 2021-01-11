@@ -23,7 +23,7 @@ const CarouselHome = () => {
   useEffect(() => {
     const getCarousels = async () => {
       try {
-        const res = await axios.get(`${apiUrl}/carousels/'`);
+        const res = await axios.get(`${apiUrl}/carousels/`);
         setCarousels(res.data);
       } catch (err) {
         setError(err);
