@@ -102,7 +102,7 @@ function ImageProduit({ buttonLabel, picture, description, name }) {
   return (
     <Container>
       <img src={picture} alt={name} width="70%" className={style.imgProduit} />
-      <div>
+      <div style={{ 'margin-top': 20 }}>
         <Button color="danger" onClick={toggle}>
           {buttonLabel}
         </Button>
