@@ -16,7 +16,6 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
-import ReactHtmlParser from 'react-html-parser';
 
 import styles from './NavbarComp.module.css';
 import logo from './LookUp.png';
@@ -76,9 +75,7 @@ const MyNavbar = () => {
                 {productDataInfo.map((product) => (
                   <>
                     <Link to={`/product/${product.ProductUuid}`}>
-                      <DropdownItem>
-                        {ReactHtmlParser(product.title)}
-                      </DropdownItem>
+                      <DropdownItem>{product.title}</DropdownItem>
                     </Link>
                   </>
                 ))}
@@ -99,7 +96,7 @@ const MyNavbar = () => {
             <Link
               className={styles.contact}
               style={{ color: 'inherit' }}
-              to="/Contact"
+              to="/contact"
             >
               Contact
             </Link>
